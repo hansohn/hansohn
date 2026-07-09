@@ -16,7 +16,7 @@ SRE with 20+ years building the cloud platforms teams run on.
 | **Working on** | Reusable Terraform / AWS modules and CI templates |
 | **Sharpening** | Kubernetes and platform tooling |
 | **Ask me about** | Terragrunt, Kubernetes, running things on AWS |
-| **Reach me** | [LinkedIn](https://linkedin.com/in/you) · open an issue on any repo |
+| **Reach me** | [LinkedIn](https://linkedin.com/in/ryanhansohn) · open an issue on any repo |
 
 #### Stack
 
