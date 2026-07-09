@@ -2,7 +2,7 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#0b1226"/>
-      <stop offset="0.55" stop-color="#0d1832"/>
+      <stop offset="0.6" stop-color="#0d1832"/>
       <stop offset="1" stop-color="#0a0f22"/>
     </linearGradient>
     <radialGradient id="glowBlue" cx="0.5" cy="0.5" r="0.5">
@@ -13,23 +13,30 @@
       <stop offset="0" stop-color="#22d3ee" stop-opacity="0.8"/>
       <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="waveA" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#7c8aff" stop-opacity="0.55"/>
+    <!-- vertical fade: waves are only colored near their crest, transparent above and below -->
+    <linearGradient id="waveA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.5" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0.65"/>
     </linearGradient>
-    <linearGradient id="waveB" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.4"/>
-      <stop offset="1" stop-color="#38bdf8" stop-opacity="0.4"/>
+    <linearGradient id="waveB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.5" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0.5"/>
     </linearGradient>
     <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
       <path d="M34 0H0V34" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
     </pattern>
+    <clipPath id="bodyClip">
+      <path d="M0 0 L1200 0 L1200 250 Q 900 274 600 252 T 0 264 Z"/>
+    </clipPath>
   </defs>
 
-  <rect width="1200" height="300" fill="url(#bg)"/>
-  <rect width="1200" height="300" fill="url(#grid)"/>
-  <ellipse cx="210" cy="40" rx="470" ry="300" fill="url(#glowBlue)" opacity="0.55"/>
-  <ellipse cx="1060" cy="250" rx="520" ry="330" fill="url(#glowCyan)" opacity="0.5"/>
+  <!-- dark body: top is a rectangle, bottom is a wave; everything below is transparent -->
+  <path d="M0 0 L1200 0 L1200 250 Q 900 274 600 252 T 0 264 Z" fill="url(#bg)"/>
+  <path d="M0 0 L1200 0 L1200 250 Q 900 274 600 252 T 0 264 Z" fill="url(#grid)"/>
+  <g clip-path="url(#bodyClip)">
+    <ellipse cx="210" cy="40" rx="470" ry="300" fill="url(#glowBlue)" opacity="0.55"/>
+    <ellipse cx="1060" cy="250" rx="520" ry="330" fill="url(#glowCyan)" opacity="0.5"/>
+  </g>
 
   <!-- terminal prompt mark -->
   <g opacity="0.5">
@@ -39,21 +46,19 @@
     </rect>
   </g>
 
-  <!-- morphing waves (capsule-render style) -->
-  <g>
-    <path fill="url(#waveB)" d="M0 300 L 0 248 Q 300 286 600 262 T 1200 270 L 1200 300 Z">
-      <animate attributeName="d" dur="20s" repeatCount="indefinite" begin="-10s"
-        keyTimes="0;0.333;0.667;1" calcMode="spline"
-        keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1"
-        values="M0 300 L 0 248 Q 300 286 600 262 T 1200 270 L 1200 300 Z;M0 300 L 0 262 Q 300 236 600 236 T 1200 252 L 1200 300 Z;M0 300 L 0 256 Q 300 240 600 262 T 1200 274 L 1200 300 Z;M0 300 L 0 248 Q 300 286 600 262 T 1200 270 L 1200 300 Z"/>
-    </path>
-    <path fill="url(#waveA)" d="M0 300 L 0 236 Q 300 272 600 246 T 1200 264 L 1200 300 Z">
-      <animate attributeName="d" dur="20s" repeatCount="indefinite" begin="0s"
-        keyTimes="0;0.333;0.667;1" calcMode="spline"
-        keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1"
-        values="M0 300 L 0 236 Q 300 272 600 246 T 1200 264 L 1200 300 Z;M0 300 L 0 256 Q 300 270 600 254 T 1200 238 L 1200 300 Z;M0 300 L 0 268 Q 300 240 600 272 T 1200 240 L 1200 300 Z;M0 300 L 0 236 Q 300 272 600 246 T 1200 264 L 1200 300 Z"/>
-    </path>
-  </g>
+  <!-- morphing waves: crest melts into the page (transparent below), motion via animated top edge -->
+  <path fill="url(#waveB)" d="M0 0 L1200 0 L1200 256 Q 900 280 600 258 T 0 270 Z">
+    <animate attributeName="d" dur="20s" repeatCount="indefinite" begin="-10s"
+      keyTimes="0;0.333;0.667;1" calcMode="spline"
+      keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1"
+      values="M0 0 L1200 0 L1200 256 Q 900 280 600 258 T 0 270 Z;M0 0 L1200 0 L1200 268 Q 900 246 600 246 T 0 258 Z;M0 0 L1200 0 L1200 262 Q 900 250 600 262 T 0 276 Z;M0 0 L1200 0 L1200 256 Q 900 280 600 258 T 0 270 Z"/>
+  </path>
+  <path fill="url(#waveA)" d="M0 0 L1200 0 L1200 244 Q 900 270 600 248 T 0 262 Z">
+    <animate attributeName="d" dur="20s" repeatCount="indefinite" begin="0s"
+      keyTimes="0;0.333;0.667;1" calcMode="spline"
+      keySplines="0.2 0 0.2 1;0.2 0 0.2 1;0.2 0 0.2 1"
+      values="M0 0 L1200 0 L1200 244 Q 900 270 600 248 T 0 262 Z;M0 0 L1200 0 L1200 258 Q 900 236 600 258 T 0 244 Z;M0 0 L1200 0 L1200 250 Q 900 262 600 240 T 0 266 Z;M0 0 L1200 0 L1200 244 Q 900 270 600 248 T 0 262 Z"/>
+  </path>
 
   <!-- text -->
   <text x="64" y="100" fill="#22d3ee" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="18" letter-spacing="1">$ whoami</text>
