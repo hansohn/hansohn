@@ -11,12 +11,14 @@
 
 <p align="center">SRE with 20+ years building the cloud platforms teams run on.</p>
 
-|  |  |
-| --- | --- |
-| **Working on** | Reusable Terraform / AWS modules and CI templates |
-| **Sharpening** | Kubernetes and platform tooling |
-| **Ask me about** | Terragrunt, Kubernetes, running things on AWS |
-| **Reach me** | [LinkedIn](https://linkedin.com/in/ryanhansohn) · open an issue on any repo |
+<div align="center">
+<table>
+  <tr><td><b>Working on</b></td><td>Reusable Terraform / AWS modules and CI templates</td></tr>
+  <tr><td><b>Sharpening</b></td><td>Kubernetes and platform tooling</td></tr>
+  <tr><td><b>Ask me about</b></td><td>Terragrunt, Kubernetes, running things on AWS</td></tr>
+  <tr><td><b>Reach me</b></td><td><a href="https://linkedin.com/in/ryanhansohn">LinkedIn</a> · open an issue on any repo</td></tr>
+</table>
+</div>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" />
