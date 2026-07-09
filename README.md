@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/hansohn/hansohn/main/banner.svg" alt="Ryan Hansohn — Platform Engineering · Cloud · IaC · Reliability" width="100%" />
+  <img src="https://raw.githubusercontent.com/hansohn/hansohn/main/banner.svg?v=2" alt="Ryan Hansohn — Platform Engineering · Cloud · IaC · Reliability" width="100%" />
 </p>
 
 <p align="center">
