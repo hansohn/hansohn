@@ -9,7 +9,6 @@
   <tr><td><b>Working on</b></td><td>Reusable Terraform / AWS modules and CI templates</td></tr>
   <tr><td><b>Sharpening</b></td><td>Kubernetes and platform tooling</td></tr>
   <tr><td><b>Ask me about</b></td><td>Terragrunt, Kubernetes, running things on AWS</td></tr>
-  <tr><td><b>Reach me</b></td><td><a href="https://linkedin.com/in/ryanhansohn">LinkedIn</a> · open an issue on any repo</td></tr>
 </table>
 </div>
 
